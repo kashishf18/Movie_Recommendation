@@ -37,12 +37,15 @@ A content-based movie recommender system built with **Python**, **Streamlit**, a
 ```
 Movie_Recommendation/
 │
-├── app.py                  # Streamlit app — main entry point
-├── movie_list.pkl          # Pickled DataFrame of movies
-├── movie_dict.pkl          # Pickled movie dictionary
-├── similarity.pkl          # Precomputed cosine similarity matrix
-├── notebook86c26b4f17.ipynb  # Jupyter notebook for model building & EDA
-└── README.md               # Project documentation
+├── app.py                    # Streamlit app — main entry point
+├── movie_list.pkl            # Pickled DataFrame of movies (titles + tags)
+├── movie_dict.pkl            # Pickled movie dictionary
+├── notebook86c26b4f17.ipynb  # Jupyter notebook — EDA, feature engineering & model building
+├── requirements.txt          # Python dependencies
+└── README.md                 # Project documentation
+
+# Note: similarity.pkl is NOT committed (184 MB generated artifact)
+# → Run the notebook to regenerate it locally
 ```
 
 ---
@@ -52,6 +55,7 @@ Movie_Recommendation/
 ### Prerequisites
 - Python 3.8+
 - A [TMDB API key](https://www.themoviedb.org/settings/api)
+- A [Kaggle account](https://www.kaggle.com) (to download the dataset via the notebook)
 
 ### 1. Clone the repository
 
@@ -63,10 +67,20 @@ cd Movie_Recommendation
 ### 2. Install dependencies
 
 ```bash
-pip install streamlit requests pandas scikit-learn
+pip install -r requirements.txt
 ```
 
-### 3. Run the app
+### 3. Generate the similarity matrix
+
+`similarity.pkl` is not included in the repo (it's a 184 MB generated file). Run the Jupyter notebook to create it:
+
+```bash
+jupyter notebook notebook86c26b4f17.ipynb
+```
+
+> Run all cells from top to bottom. The last cell saves `similarity.pkl` to your local directory.
+
+### 4. Run the app
 
 ```bash
 streamlit run app.py
