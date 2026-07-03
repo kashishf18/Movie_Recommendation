@@ -15,9 +15,6 @@ env/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Large model/data files (too large for GitHub without Git LFS)
-similarity.pkl
-
 # OS
 .DS_Store
 Thumbs.db
